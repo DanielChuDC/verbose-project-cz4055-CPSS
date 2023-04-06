@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+    id 'application'  //property mainClassName is introduced by the gradle plugin application
+}
+
+group 'org.example'
+version '1.1.0'
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    // https://mvnrepository.com/artifact/ch.qos.logback/logback-core
+    implementation group: 'ch.qos.logback', name: 'logback-core', version: '1.4.6'
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.7'
+    // https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.4.6'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+mainClassName = ' org.example.Main'
+
+task hello {
+    println 'Hello world!'
+}
+
+task fatJar(type: Jar) {
+
+    manifest {
+        attributes 'Main-Class': "${mainClassName}"
+    }
+
+    archiveBaseName = "${rootProject.name}"
+    tasks.withType(Jar){
+        duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    }
+    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    //from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } setDuplicatesStrategy(DuplicatesStrategy.INCLUDE) }
+    with jar
+}
