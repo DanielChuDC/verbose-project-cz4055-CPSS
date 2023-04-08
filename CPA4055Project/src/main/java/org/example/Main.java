@@ -46,8 +46,8 @@ public class Main {
         logger.info("Please check the waveform file is in the same directory with this jar or provide 2 arguments if you need.");
         logger.info("Optional 1st argument: Power trace filename");
         logger.info("Optional 2nd argument: Which column contain plain text (default 0)");
-        logger.info("Example: java -jar CPA.jar");
-        logger.info("Example: java -jar CPA.jar ./waveform.csv 2");
+        logger.info("Example: java -jar CPA4055Project-1.1.0.jar");
+        logger.info("Example: java -jar CPA4055Project-1.1.0.jar ./waveform.csv 2");
     }
 
     public static void startOfAttack(final String filename,
