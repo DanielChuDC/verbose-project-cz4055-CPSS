@@ -166,10 +166,9 @@ public class common {
     }
 
     /**
-     * It can be used to generalize 192 and 256 bits AES encryption key
      * Generates a hypothesis matrix for a specific byte number of a 128-bit AES encryption key.
      * The hypothesis matrix is generated using the given plain text and the initial hypothesis matrix.
-     *
+     * It can be used to generalize 192 and 256 bits AES encryption key
      * @param byteNumber The byte number (1-16) of the AES key for which the hypothesis matrix is to be generated.
      * @param plainText  An array of plain texts to use for generating the hypothesis matrix.
      * @return The new hypothesis matrix generated using the given plain text and initial hypothesis matrix.

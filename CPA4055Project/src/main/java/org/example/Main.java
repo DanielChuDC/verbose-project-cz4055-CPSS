@@ -60,7 +60,6 @@ public class Main {
         Main.tracer = new File(Main.powerTraceFileRootDir);
 
         try {
-           // final cz4055CPA obj = new cz4055CPA(CPAMain.plainTextColNum, CPAMain.irrelevantFrontColumns, CPAMain.irrelevantCOLBehind, csvtrack);
             final cz4055CPA obj = new cz4055CPA(Main.ColumnContainIrrelant);
             obj.init(Main.tracer);
             logger.info("Brute force the possible number of key...");
